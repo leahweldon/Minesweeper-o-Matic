@@ -1,0 +1,75 @@
+cabal-version: 2.2
+
+-- This file has been generated from package.yaml by hpack version 0.37.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           minesweeper-project
+version:        0.1.0.0
+author:         Leah Weldon
+copyright:      2025
+license:        BSD-3-Clause
+license-file:   LICENSE
+category:       Game
+synopsis:       A Haskell Minesweeper game with a browser-based interface
+build-type:     Simple
+extra-source-files:
+    README.md
+
+
+library
+  exposed-modules:
+      GameUI
+      Lib
+      Mine
+  other-modules:
+      Paths_minesweeper_project
+  autogen-modules:
+      Paths_minesweeper_project
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      array
+    , base >=4.7 && <5
+    , containers
+    , random
+    , threepenny-gui
+  default-language: Haskell2010
+
+executable minesweeper-project-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_minesweeper_project
+  autogen-modules:
+      Paths_minesweeper_project
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      array
+    , base >=4.7 && <5
+    , containers
+    , minesweeper-project
+    , random
+    , threepenny-gui
+  default-language: Haskell2010
+
+test-suite minesweeper-project-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_minesweeper_project
+  autogen-modules:
+      Paths_minesweeper_project
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      array
+    , base >=4.7 && <5
+    , containers
+    , minesweeper-project
+    , random
+    , threepenny-gui
+  default-language: Haskell2010

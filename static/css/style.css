@@ -1,0 +1,183 @@
+/* Sets a bright pastel gradient for the page background. Also removes any default margin/padding
+   and has a fun, comic-style font.  */
+   body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(90deg, #ffe5f2, #fff4da);
+    font-family: "Comic Sans MS", "Segoe UI", sans-serif;
+    overflow-x: hidden;
+  }
+  
+  /* The container that appears at the beginning with instructions on how to play.
+     It has a white-ish background, pink border, and a slight box shadow for a pop-up look. */
+  .instructions-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: rgba(255, 255, 255, 0.85);
+    border: 4px double #ff0080;
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(255, 0, 128, 0.3);
+  }
+  
+  /* The big title text on the instructions. Pink color and a white shadow effect. */
+  .title {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #ff0080;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px #fff;
+  }
+  
+  /* Paragraph styling for the instructions text*/
+  .instructions-paragraph {
+    white-space: pre-line;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  
+  /* The main button that the user clicks to move from the instructions 
+     to the main game. 
+     It's a bright pink color with a slight hover transform. */
+  .start-btn {
+    font-size: 1.2rem;
+    padding: 12px 24px;
+    background: #ff0080;
+    color: #fff;
+    border: 3px solid #cc0066;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .start-btn:hover {
+    background: #ff3399;
+    transform: scale(1.07);
+  }
+  
+  /* A container for the main game content, which starts hidden 
+     and then becomes visible once the instructions are dismissed. */
+  .main-content {
+    max-width: 900px;
+    margin: 40px auto;
+    background: rgba(255, 255, 255, 0.94);
+    border: 3px dashed #cc0066;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 5px 5px 15px rgba(255,0,128,0.2);
+  }
+  
+  /* The game title at the top: pink coloring, with a subtle white text shadow. */
+  .game-title {
+    font-size: 2em;
+    color: #cc0066;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px #fff;
+  }
+  
+  /* A label where feedback messages are shown like "Bomb triggered!" or "You win!"
+     It's styled with pinkish text color and moderate font size. */
+  .info-label {
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #99004d;
+  }
+  
+  /* The container that holds the Minesweeper board (an SVG), with a pink border 
+     and a soft pink background. */
+  .board-container {
+    margin-top: 20px;
+    text-align: center;
+    padding: 15px;
+    border: 3px dashed #ff66cc;
+    background: #ffeef8;
+    border-radius: 8px;
+  }
+  
+  /* Generic styling for all buttons and the slider in the row. 
+     pinkish backgrounds, soft edges, and a small transform on hover. */
+  button {
+    font-size: 1rem;
+    padding: 8px 14px;
+    margin-right: 10px;
+    border-radius: 6px;
+    border: 2px solid #ff66cc;
+    background: #ff99dd;
+    color: #660033;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  button:hover {
+    background: #ffb3e6;
+    transform: scale(1.03);
+  }
+  
+  /* Styles for range slider elements.*/
+  input[type="range"] {
+    -webkit-appearance: none;
+    width: 120px;
+    height: 6px;
+    background: #ffeef8;
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid #ff66cc;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    background: #ff66cc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  input[type="range"]::-webkit-slider-thumb:hover {
+    background: #ff99dd;
+  }
+  
+  /* Ensures that any container with margin-top: 10px is treated as a row */
+  [style*="margin-top: 10px"] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  
+/* Keep larger custom boards accessible on narrow displays. */
+.main-content {
+  width: min(900px, calc(100% - 32px));
+  box-sizing: border-box;
+}
+
+.board-container {
+  overflow-x: auto;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.board-container svg {
+  display: block;
+  margin: 0 auto;
+}
+
+@media (max-width: 620px) {
+  .instructions-container {
+    margin: 16px;
+    padding: 18px;
+  }
+
+  .main-content {
+    margin: 16px auto;
+    padding: 14px;
+  }
+
+  .game-title {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,52 @@
+name: minesweeper-project
+version: 0.1.0.0
+synopsis: A Haskell Minesweeper game with a browser-based interface
+category: Game
+license: BSD-3-Clause
+author: Leah Weldon
+copyright: 2025
+
+extra-source-files:
+  - README.md
+
+dependencies:
+  - base >= 4.7 && < 5
+  - random
+  - threepenny-gui
+  - containers
+  - array
+
+ghc-options:
+  - -Wall
+  - -Wcompat
+  - -Widentities
+  - -Wincomplete-record-updates
+  - -Wincomplete-uni-patterns
+  - -Wmissing-export-lists
+  - -Wmissing-home-modules
+  - -Wpartial-fields
+  - -Wredundant-constraints
+
+library:
+  source-dirs: src
+
+executables:
+  minesweeper-project-exe:
+    main: Main.hs
+    source-dirs: app
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - minesweeper-project
+
+tests:
+  minesweeper-project-test:
+    main: Spec.hs
+    source-dirs: test
+    ghc-options:
+      - -threaded
+      - -rtsopts
+    dependencies:
+      - minesweeper-project
