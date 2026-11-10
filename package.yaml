@@ -4,8 +4,7 @@ synopsis: A Haskell Minesweeper game with a browser-based interface
 category: Game
 license: BSD-3-Clause
 author: Leah Weldon
-copyright: 2025
-
+copyright: "2025"
 extra-source-files:
   - README.md
 
