@@ -1,0 +1,14 @@
+# Haskell and Cabal build artefacts
+.stack-work/
+dist-newstyle/
+dist/
+*.hi
+*.o
+*.dyn_hi
+*.dyn_o
+
+# Local editor, operating-system and temporary files
+.DS_Store
+*.swp
+*~
+.vscode/
