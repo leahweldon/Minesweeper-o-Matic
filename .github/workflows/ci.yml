@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    name: Build, test and benchmark
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Stack
+        uses: haskell-actions/setup@v2
+        with:
+          enable-stack: true
+          stack-no-global: true
+          stack-version: latest
+
+      - name: Cache Stack
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.stack
+            .stack-work
+          key: stack-${{ runner.os }}-${{ hashFiles('stack.yaml', 'package.yaml') }}
+          restore-keys: stack-${{ runner.os }}-
+
+      - name: Build library, game, tests and benchmark
+        run: stack build --test --bench --no-run-tests --no-run-benchmarks
+
+      - name: Run game-rule tests
+        run: stack test
+
+      - name: Run solver benchmark
+        run: |
+          "$(stack path --dist-dir)/build/solver-benchmark/solver-benchmark" 300 | tee solver-benchmark.md
+          cat solver-benchmark.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload benchmark results
+        uses: actions/upload-artifact@v4
+        with:
+          name: solver-benchmark
+          path: solver-benchmark.md
