@@ -49,3 +49,12 @@ tests:
       - -rtsopts
     dependencies:
       - minesweeper-project
+
+benchmarks:
+  solver-benchmark:
+    main: SolverBenchmark.hs
+    source-dirs: bench
+    ghc-options:
+      - -O2
+    dependencies:
+      - minesweeper-project

@@ -73,3 +73,22 @@ test-suite minesweeper-project-test
     , random
     , threepenny-gui
   default-language: Haskell2010
+
+benchmark solver-benchmark
+  type: exitcode-stdio-1.0
+  main-is: SolverBenchmark.hs
+  other-modules:
+      Paths_minesweeper_project
+  autogen-modules:
+      Paths_minesweeper_project
+  hs-source-dirs:
+      bench
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -O2
+  build-depends:
+      array
+    , base >=4.7 && <5
+    , containers
+    , minesweeper-project
+    , random
+    , threepenny-gui
+  default-language: Haskell2010
